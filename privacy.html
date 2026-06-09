@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Challenge — Cyber Guardian</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <span>🕵️ Privacy Challenge — can you spot apps and services that compromise your data?</span>
+      <span>Correct answer: +50 pts &nbsp;|&nbsp; Wrong answer: −50 pts &nbsp;|&nbsp; Pass score: 200 pts</span>
+      <span>🕵️ Privacy Challenge — can you spot apps and services that compromise your data?</span>
+      <span>Correct answer: +50 pts &nbsp;|&nbsp; Wrong answer: −50 pts &nbsp;|&nbsp; Pass score: 200 pts</span>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="card fade-in">
+
+      <div class="page-logo">
+        <img src="team logo.png" alt="Logo" class="logo-img">
+        <div>
+          <div class="page-logo-text">Cyber Guardian</div>
+          <h2 style="margin-top:4px;">🕵️ Privacy Challenge</h2>
+        </div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-fill" id="progress-fill" style="width:20%"></div>
+      </div>
+
+      <div class="quiz-header">
+        <span class="quiz-player" id="player-display"></span>
+        <span class="quiz-score-badge" id="score-badge">0 pts</span>
+      </div>
+
+      <div id="quiz-wrap">
+        <p class="question-num" id="question-num"></p>
+        <div class="question-text" id="question-text"></div>
+        <div id="options-wrap"></div>
+        <div class="feedback" id="feedback"></div>
+      </div>
+
+      <div id="result-wrap" class="hidden"></div>
+
+      <div class="nav-row">
+        <button class="btn btn-nav" id="prev-btn" onclick="_quizPrev()">← Previous</button>
+        <button class="btn btn-nav" id="next-btn" onclick="_quizNext()">Next →</button>
+      </div>
+      <div class="flex flex-center mt-16">
+        <button class="btn btn-back" onclick="location.href='threats.html'">← Back to Threats</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    window.QUIZ_DATA = {
+      title: 'Privacy Challenge',
+      icon: '🕵️',
+      data: [
+        {
+          q: "An app requests access to your location at all times, even when you're not using it. Is this a concern?",
+          opts: ["That's fine", "That's risky", "Ignore it", "Allow it"],
+          ans: 1,
+          explanation: "Apps should only access your location when actively in use — constant tracking is excessive and invasive."
+        },
+        {
+          q: "A free app wants to upload and store your entire contacts list. What's the safest response?",
+          opts: ["Seems safe", "This is dangerous", "Ignore the request", "Accept and continue"],
+          ans: 1,
+          explanation: "Collecting contacts without a clear need is a serious privacy risk for you and everyone in your contacts."
+        },
+        {
+          q: "You notice tracking cookies following your activity across dozens of websites. Should you be concerned?",
+          opts: ["Completely normal", "Worth watching", "Ignore them", "Agree to all"],
+          ans: 1,
+          explanation: "Cross-site tracking cookies build detailed profiles of your behaviour without your informed consent."
+        },
+        {
+          q: "An app requests camera access, but the app has no features that need a camera. What should you do?",
+          opts: ["Allow access", "Deny access", "Ignore the prompt", "Share it anyway"],
+          ans: 1,
+          explanation: "Always deny permissions that an app has no legitimate reason to request — this limits your attack surface."
+        },
+        {
+          q: "An app's terms of service reveal it sells user data to third parties. How serious is this?",
+          opts: ["Not a big deal", "A real concern", "Ignore the terms", "That's OK"],
+          ans: 1,
+          explanation: "Selling user data to unknown third parties is a significant privacy risk — consider using an alternative."
+        }
+      ]
+    };
+  </script>
+  <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyberbullying Challenge — Cyber Guardian</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <span>🛡 Cyberbullying Challenge — recognise harmful online behaviour and respond safely.</span>
+      <span>Correct answer: +50 pts &nbsp;|&nbsp; Wrong answer: −50 pts &nbsp;|&nbsp; Pass score: 200 pts</span>
+      <span>🛡 Cyberbullying Challenge — recognise harmful online behaviour and respond safely.</span>
+      <span>Correct answer: +50 pts &nbsp;|&nbsp; Wrong answer: −50 pts &nbsp;|&nbsp; Pass score: 200 pts</span>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="card fade-in">
+
+      <div class="page-logo">
+        <img src="team logo.png" alt="Logo" class="logo-img">
+        <div>
+          <div class="page-logo-text">Cyber Guardian</div>
+          <h2 style="margin-top:4px;">🛡 Cyberbullying Challenge</h2>
+        </div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-fill" id="progress-fill" style="width:20%"></div>
+      </div>
+
+      <div class="quiz-header">
+        <span class="quiz-player" id="player-display"></span>
+        <span class="quiz-score-badge" id="score-badge">0 pts</span>
+      </div>
+
+      <div id="quiz-wrap">
+        <p class="question-num" id="question-num"></p>
+        <div class="question-text" id="question-text"></div>
+        <div id="options-wrap"></div>
+        <div class="feedback" id="feedback"></div>
+      </div>
+
+      <div id="result-wrap" class="hidden"></div>
+
+      <div class="nav-row">
+        <button class="btn btn-nav" id="prev-btn" onclick="_quizPrev()">← Previous</button>
+        <button class="btn btn-nav" id="next-btn" onclick="_quizNext()">Next →</button>
+      </div>
+      <div class="flex flex-center mt-16">
+        <button class="btn btn-back" onclick="location.href='threats.html'">← Back to Threats</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    window.QUIZ_DATA = {
+      title: 'Cyberbullying Challenge',
+      icon: '🛡',
+      data: [
+        {
+          q: "Someone repeatedly sends you hostile and threatening messages online. What should you do first?",
+          opts: ["Reply and argue", "Block and report them", "Ignore it", "Share their messages publicly"],
+          ans: 1,
+          explanation: "Block and report the person immediately. Document the messages before blocking in case you need evidence."
+        },
+        {
+          q: "A classmate shares an embarrassing photo of someone online without their consent. What is the correct action?",
+          opts: ["Like and share it", "Report it to the platform", "Ignore it", "Comment on it"],
+          ans: 1,
+          explanation: "Sharing images without consent is harmful and may be illegal. Report it to the platform and support the person affected."
+        },
+        {
+          q: "You see a group chat where people are ganging up on one person with cruel messages. What do you do?",
+          opts: ["Join in", "Intervene or report it", "Stay silent", "Leave the chat"],
+          ans: 1,
+          explanation: "Staying silent makes you a bystander. Speaking up or reporting the behaviour helps protect the target."
+        },
+        {
+          q: "Someone online is pretending to be your friend to extract personal information from you. What is this called?",
+          opts: ["Friendly chat", "Social engineering", "Normal behaviour", "A joke"],
+          ans: 1,
+          explanation: "This is social engineering or impersonation — a manipulation tactic used to gain your trust and exploit it."
+        },
+        {
+          q: "A person you've never met online asks for your home address, claiming to send you a prize. What should you do?",
+          opts: ["Share your address", "Refuse and block them", "Ask for more details", "Ignore for now"],
+          ans: 1,
+          explanation: "Never share your home address with strangers online. This is a common tactic used by predators and scammers."
+        }
+      ]
+    };
+  </script>
+  <script src="script.js"></script>
+
+</body>
+</html>

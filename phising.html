@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phishing Patrol — Cyber Guardian</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <span>🎣 Phishing Patrol — identify deceptive emails, fake links, and social engineering traps.</span>
+      <span>Correct answer: +50 pts &nbsp;|&nbsp; Wrong answer: −50 pts &nbsp;|&nbsp; Pass score: 200 pts</span>
+      <span>🎣 Phishing Patrol — identify deceptive emails, fake links, and social engineering traps.</span>
+      <span>Correct answer: +50 pts &nbsp;|&nbsp; Wrong answer: −50 pts &nbsp;|&nbsp; Pass score: 200 pts</span>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="card fade-in">
+
+      <div class="page-logo">
+        <img src="team logo.png" alt="Logo" class="logo-img">
+        <div>
+          <div class="page-logo-text">Cyber Guardian</div>
+          <h2 style="margin-top:4px;">🎣 Phishing Patrol</h2>
+        </div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-fill" id="progress-fill" style="width:20%"></div>
+      </div>
+
+      <div class="quiz-header">
+        <span class="quiz-player" id="player-display"></span>
+        <span class="quiz-score-badge" id="score-badge">0 pts</span>
+      </div>
+
+      <div id="quiz-wrap">
+        <p class="question-num" id="question-num"></p>
+        <div class="question-text" id="question-text"></div>
+        <div id="options-wrap"></div>
+        <div class="feedback" id="feedback"></div>
+      </div>
+
+      <div id="result-wrap" class="hidden"></div>
+
+      <div class="nav-row">
+        <button class="btn btn-nav" id="prev-btn" onclick="_quizPrev()">← Previous</button>
+        <button class="btn btn-nav" id="next-btn" onclick="_quizNext()">Next →</button>
+      </div>
+      <div class="flex flex-center mt-16">
+        <button class="btn btn-back" onclick="location.href='threats.html'">← Back to Threats</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    window.QUIZ_DATA = {
+      title: 'Phishing Patrol',
+      icon: '🎣',
+      data: [
+        {
+          q: "You receive: \"URGENT! Your PayPal account has been limited. Click here to restore access immediately.\" What do you do?",
+          opts: ["Mark as Threat", "Mark as Safe", "Ignore it", "Escalate to PayPal"],
+          ans: 0,
+          explanation: "This is a classic phishing attack. Urgency and account threats are manipulation tactics — never click these links."
+        },
+        {
+          q: "Amazon sends you an email asking you to reply with your password to verify your account. What is this?",
+          opts: ["A safe request", "A phishing attempt", "Ignore it", "Forward to a friend"],
+          ans: 1,
+          explanation: "No legitimate company will ever ask for your password via email. This is phishing."
+        },
+        {
+          q: "You receive an email from your bank with an urgent link asking you to log in to prevent account suspension. What is this?",
+          opts: ["Legitimate alert", "A fake email", "Ignore it", "Reply with your details"],
+          ans: 1,
+          explanation: "Banks do not send urgent login links via email. Visit your bank's website directly — never through emailed links."
+        },
+        {
+          q: "You receive an email saying you've won a lottery you never entered. What should you do?",
+          opts: ["Claim your prize", "Delete it — it's fake", "Respond for details", "Share with friends"],
+          ans: 1,
+          explanation: "Unexpected lottery wins are almost always scams designed to steal personal information or money."
+        },
+        {
+          q: "An unknown sender messages you asking for your one-time password (OTP) to help 'unlock' your account. What do you do?",
+          opts: ["It seems safe", "It's fake — don't share", "Send the OTP", "Ignore for now"],
+          ans: 1,
+          explanation: "Never share OTPs with anyone. They are a second factor of authentication only you should use."
+        }
+      ]
+    };
+  </script>
+  <script src="script.js"></script>
+
+</body>
+</html>

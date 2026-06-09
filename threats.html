@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose a Threat — Cyber Guardian</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <span>Choose your threat category and prove your cyber instincts.</span>
+      <span>🛡 Password · Privacy · Phishing · Cyberbullying — which challenge will you face first?</span>
+      <span>Score 200+ to pass each level. All scores are tracked on the leaderboard.</span>
+      <span>Choose your threat category and prove your cyber instincts.</span>
+      <span>🛡 Password · Privacy · Phishing · Cyberbullying — which challenge will you face first?</span>
+      <span>Score 200+ to pass each level. All scores are tracked on the leaderboard.</span>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="card fade-in">
+
+      <div class="page-logo">
+        <img src="team logo.png" alt="Logo" class="logo-img">
+        <div>
+          <div class="page-logo-text">Cyber Guardian</div>
+          <h2 style="margin-top:4px;">Choose a Threat</h2>
+        </div>
+      </div>
+
+      <!-- Username panel -->
+      <div id="player-panel" class="username-panel">
+        <input id="username-input" class="text-input" type="text" placeholder="Enter your username…" maxlength="24">
+        <button class="btn btn-primary" id="save-btn" style="padding:10px 20px; font-size:11px;">Save</button>
+        <button class="btn btn-secondary hidden" id="new-btn" style="padding:10px 20px; font-size:11px;">New Player</button>
+      </div>
+      <p id="welcome-msg" class="welcome-text text-center mb-16"></p>
+
+      <div class="divider"></div>
+
+      <!-- Threat grid -->
+      <div class="threat-grid">
+        <div class="threat-card" onclick="gotoQuiz('password.html')">
+          <span class="threat-icon">🔐</span>
+          <div class="threat-title">Password</div>
+          <div class="threat-desc">Test your ability to recognise secure password practices and account threats.</div>
+        </div>
+        <div class="threat-card" onclick="gotoQuiz('privacy.html')">
+          <span class="threat-icon">🕵️</span>
+          <div class="threat-title">Privacy</div>
+          <div class="threat-desc">Can you spot apps and services that compromise your personal data?</div>
+        </div>
+        <div class="threat-card" onclick="gotoQuiz('phising.html')">
+          <span class="threat-icon">🎣</span>
+          <div class="threat-title">Phishing</div>
+          <div class="threat-desc">Identify deceptive emails, fake links, and social engineering traps.</div>
+        </div>
+        <div class="threat-card" onclick="gotoQuiz('bullying.html')">
+          <span class="threat-icon">🛡</span>
+          <div class="threat-title">Cyberbullying</div>
+          <div class="threat-desc">Recognise harmful online behaviour and how to respond safely.</div>
+        </div>
+      </div>
+
+      <!-- Scoreboard -->
+      <div class="scoreboard" id="scoreboard"></div>
+
+      <div class="flex flex-center mt-24">
+        <button class="btn btn-back" onclick="location.href='index.html'">← Back to Home</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const usernameInput = document.getElementById('username-input');
+    const saveBtn       = document.getElementById('save-btn');
+    const newBtn        = document.getElementById('new-btn');
+    const welcomeMsg    = document.getElementById('welcome-msg');
+    const scoreboard    = document.getElementById('scoreboard');
+
+    function getUsername() { return localStorage.getItem('username') || ''; }
+
+    function saveUsername() {
+      const name = usernameInput.value.trim();
+      if (!name) { alert('Please enter a username to continue.'); return; }
+      localStorage.setItem('username', name);
+      renderPlayer();
+    }
+
+    function newPlayer() {
+      localStorage.removeItem('username');
+      usernameInput.value = '';
+      renderPlayer();
+    }
+
+    function renderPlayer() {
+      const name = getUsername();
+      if (name) {
+        welcomeMsg.textContent = '👋  Welcome back, ' + name + '. Choose a threat to begin your challenge.';
+        usernameInput.classList.add('hidden');
+        saveBtn.classList.add('hidden');
+        newBtn.classList.remove('hidden');
+      } else {
+        welcomeMsg.textContent = 'Enter a username to track your scores and appear on the leaderboard.';
+        usernameInput.classList.remove('hidden');
+        saveBtn.classList.remove('hidden');
+        newBtn.classList.add('hidden');
+      }
+    }
+
+    function getScores() {
+      try { return JSON.parse(localStorage.getItem('quizScores') || '[]'); }
+      catch(e) { return []; }
+    }
+
+    function renderScoreboard() {
+      const scores = getScores();
+      if (!scores.length) {
+        scoreboard.innerHTML = '<p class="scoreboard-title">Leaderboard</p><p style="color:var(--text-lo);font-size:0.85rem;text-align:center;padding-bottom:8px;">No scores yet — be the first to play!</p>';
+        return;
+      }
+      const sorted = scores.slice().sort((a, b) => b.score - a.score);
+      const medals = ['gold','silver','bronze'];
+      const rows = sorted.slice(0,10).map((entry, i) => `
+        <div class="score-row">
+          <span class="score-rank ${medals[i] || ''}">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : '#' + (i+1)}</span>
+          <span class="score-name">${entry.name}</span>
+          <span class="score-pts">${entry.score} pts</span>
+        </div>
+      `).join('');
+      scoreboard.innerHTML = `<p class="scoreboard-title">Leaderboard</p>${rows}`;
+    }
+
+    function gotoQuiz(url) {
+      if (!getUsername()) {
+        alert('Please enter and save a username first.');
+        usernameInput.focus();
+        return;
+      }
+      location.href = url;
+    }
+
+    saveBtn.addEventListener('click', saveUsername);
+    newBtn.addEventListener('click', newPlayer);
+    usernameInput.addEventListener('keydown', e => { if (e.key === 'Enter') saveUsername(); });
+
+    renderPlayer();
+    renderScoreboard();
+  </script>
+
+</body>
+</html>
